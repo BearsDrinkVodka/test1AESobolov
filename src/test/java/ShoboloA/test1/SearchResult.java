@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SearchResult {
 
-    private By firststring = By.cssSelector("a[accesskey='1']");
+    private By firstString = By.cssSelector("a[accesskey='1']");
     private final WebDriver driver;
 
     public SearchResult(WebDriver driver) {
@@ -19,6 +19,6 @@ public class SearchResult {
 
 
     public String getResult() {
-        return driver.findElement(firststring).getText();
+        return driver.findElement(firstString).getText();
     }
 }
