@@ -1,31 +1,20 @@
 package ShoboloA.test1;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.BeforeClass;
+
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
 
-public class SearchTEST {
-    public static WebDriver driver;
-    public static Searchpage searchPage;
-    public static SearchResult searchResult;
-    @BeforeClass
-    public static void setup(){
-        System.setProperty("webdriver.chrome.driver", "E:\\driver.chrome\\chromedriver.exe");
-        driver = new ChromeDriver() ;
-        searchPage = new Searchpage(driver);
-        searchResult =new SearchResult(driver);
-        driver.manage().window().maximize();
-        driver.get("https://yandex.ru");
 
-    }
+public class SearchTEST extends BaseTest {
 
     @Test
     public void starttest(){
+        searchPage = new Searchpage(driver);
+        searchResult = new SearchResult(driver);
         searchPage.inputSearch("Погода в Пензе");
-        searchPage.SearchButton();
-        searchResult.ResultButton();
+        String weather = searchResult.getResult();
+        Assert.assertEquals("Погода в Пензе", weather);
     }
 }
